@@ -20,7 +20,7 @@ existence < shape < inspected < reran
 ## Install
 
 ```bash
-npx proof-gate@latest --help
+npx @relaxedg/proof-gate@latest --help
 ```
 
 For a local checkout:
@@ -35,7 +35,7 @@ npm run check
 ## Quick demo
 
 ```bash
-npx proof-gate@latest check examples/toy-service/tasks
+npx @relaxedg/proof-gate@latest check examples/toy-service/tasks
 ```
 
 Example output:

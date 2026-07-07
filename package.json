@@ -1,5 +1,5 @@
 {
-  "name": "proof-gate",
+  "name": "@relaxedg/proof-gate",
   "version": "0.1.0",
   "description": "A tiny CI gate that makes done require class-aware, inspectable evidence.",
   "type": "module",
