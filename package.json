@@ -1,0 +1,53 @@
+{
+  "name": "proof-gate",
+  "version": "0.1.0",
+  "description": "A tiny CI gate that makes done require class-aware, inspectable evidence.",
+  "type": "module",
+  "bin": {
+    "proof-gate": "dist/cli.js"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE",
+    "action.yml",
+    "docs",
+    "examples"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "test": "vitest run",
+    "check": "node dist/cli.js check examples/toy-service/tasks && node dist/cli.js check-pr examples/toy-service/pr-body.md",
+    "prepublishOnly": "npm run build && npm test && npm run check"
+  },
+  "keywords": [
+    "agentops",
+    "ci",
+    "github-actions",
+    "proof",
+    "runtime-truth",
+    "ai-agents"
+  ],
+  "author": "Greg Bond",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gregbond/proof-gate.git"
+  },
+  "bugs": {
+    "url": "https://github.com/gregbond/proof-gate/issues"
+  },
+  "homepage": "https://github.com/gregbond/proof-gate#readme",
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "js-yaml": "^4.1.0"
+  },
+  "devDependencies": {
+    "@types/js-yaml": "^4.0.9",
+    "@types/node": "^22.10.2",
+    "typescript": "^5.7.2",
+    "vitest": "^2.1.8"
+  }
+}

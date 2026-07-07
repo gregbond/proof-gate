@@ -1,0 +1,7 @@
+id: LIE-1
+status: done
+proof:
+  class: local
+  evidence:
+    - type: file
+      value: ../evidence/unit-test.txt

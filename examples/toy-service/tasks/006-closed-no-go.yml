@@ -1,0 +1,9 @@
+id: NO-GO-1
+status: done
+proof_state: closed_no_go
+reason: The correct decision was not to ship this change.
+proof:
+  class: no-go
+  evidence:
+    - type: file
+      value: ../evidence/no-go.md

@@ -1,0 +1,4 @@
+{
+  "count": 3,
+  "query": "select count(*) from toy_events"
+}

@@ -1,0 +1,8 @@
+id: LIE-2
+status: done
+proof_state: runtime_proven
+proof:
+  class: local
+  evidence:
+    - type: file
+      value: ../evidence/unit-test.txt

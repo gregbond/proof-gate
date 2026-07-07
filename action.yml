@@ -1,0 +1,56 @@
+name: proof-gate
+description: Make done require class-aware, inspectable evidence.
+inputs:
+  mode:
+    description: Run mode, either pr or check.
+    required: false
+    default: pr
+  path:
+    description: File or directory for mode=check.
+    required: false
+    default: .
+  pr-body-file:
+    description: Optional PR body file for mode=pr. Defaults to the GitHub event pull request body.
+    required: false
+    default: ""
+  version:
+    description: npm version to install.
+    required: false
+    default: latest
+  network:
+    description: Allow network-backed runtime verifiers.
+    required: false
+    default: "false"
+  allow-exec:
+    description: Allow command/query verifiers.
+    required: false
+    default: "false"
+runs:
+  using: composite
+  steps:
+    - name: Install proof-gate
+      shell: bash
+      run: npm install -g "proof-gate@${{ inputs.version }}"
+    - name: Run proof-gate
+      shell: bash
+      env:
+        INPUT_MODE: ${{ inputs.mode }}
+        INPUT_PATH: ${{ inputs.path }}
+        INPUT_PR_BODY_FILE: ${{ inputs.pr-body-file }}
+        INPUT_NETWORK: ${{ inputs.network }}
+        INPUT_ALLOW_EXEC: ${{ inputs.allow-exec }}
+      run: |
+        set -euo pipefail
+        args=()
+        if [ "${INPUT_NETWORK}" = "true" ]; then args+=(--network); fi
+        if [ "${INPUT_ALLOW_EXEC}" = "true" ]; then args+=(--allow-exec); fi
+        if [ "${INPUT_MODE}" = "check" ]; then
+          proof-gate check "${INPUT_PATH}" "${args[@]}"
+          exit $?
+        fi
+        body_file="${INPUT_PR_BODY_FILE}"
+        if [ -z "${body_file}" ]; then
+          body_file="${RUNNER_TEMP}/proof-gate-pr-body.md"
+          node -e "const fs=require('fs'); const event=JSON.parse(fs.readFileSync(process.env.GITHUB_EVENT_PATH,'utf8')); fs.writeFileSync(process.argv[1], event.pull_request?.body || '')" "${body_file}"
+        fi
+        proof-gate check-pr "${body_file}" "${args[@]}"

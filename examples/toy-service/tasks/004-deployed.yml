@@ -1,0 +1,10 @@
+id: DEPLOY-1
+status: done
+proof_state: deployed
+expected_sha: abc123
+proof:
+  class: deploy
+  evidence:
+    - type: release_json
+      value: ../release.json
+      expected_sha: abc123

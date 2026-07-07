@@ -1,0 +1,8 @@
+id: MERGED-1
+status: done
+proof_state: merged
+proof:
+  class: ci
+  evidence:
+    - type: url
+      value: https://github.com/gregbond/proof-gate/commit/abcdef1

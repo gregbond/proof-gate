@@ -1,0 +1,8 @@
+id: PR-1
+status: done
+proof_state: pr_open
+proof:
+  class: ci
+  evidence:
+    - type: url
+      value: https://github.com/gregbond/proof-gate/actions/runs/123456789

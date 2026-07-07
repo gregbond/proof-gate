@@ -1,0 +1,9 @@
+id: RUNTIME-1
+status: done
+proof_state: runtime_proven
+proof:
+  class: runtime
+  evidence:
+    - type: receipt
+      value: ../evidence/runtime-receipt.json
+      expected_status: 200
