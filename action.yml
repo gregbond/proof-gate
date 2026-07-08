@@ -1,5 +1,8 @@
 name: proof-gate
 description: Make done require class-aware, inspectable evidence.
+branding:
+  icon: shield
+  color: green
 inputs:
   mode:
     description: Run mode, either pr or check.
@@ -30,7 +33,7 @@ runs:
   steps:
     - name: Install proof-gate
       shell: bash
-      run: npm install -g "proof-gate@${{ inputs.version }}"
+      run: npm install -g "@relaxedg/proof-gate@${{ inputs.version }}"
     - name: Run proof-gate
       shell: bash
       env:
