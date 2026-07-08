@@ -57,7 +57,7 @@ jobs:
   proof-gate:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - uses: gregbond/proof-gate@v0.1
         with:
           mode: pr
